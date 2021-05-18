@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap");
+html {
+  font-family: "Spartan", sans-serif;
+  font-size: 16px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+}
+
+#calc {
+  width: 90vw;
+  height: 90vh;
+  box-shadow: 0px 0px 1px black;
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#header h1 {
+  font-size: 36px;
+}
+#header #themes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  width: 20%;
+}
+#header .interactions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#header .interactions > * {
+  display: flex;
+  justify-content: space-around;
+  font-size: 0.6rem;
+  width: 100%;
+}
+#header .buttons {
+  position: relative;
+  width: 3rem;
+  border-radius: 2rem;
+  background-color: #333;
+  height: 1rem;
+}
+#header .buttons::before {
+  position: absolute;
+  top: 0.5rem;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  content: "";
+  width: 0.7rem;
+  height: 0.7rem;
+  background-color: #fff;
+  border-radius: 50%;
+}
+#header .buttons input {
+  opacity: 0;
+  cursor: pointer;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+
+.attribution a {
+  color: #3e52a3;
+}
+
+/*# sourceMappingURL=main.css.map */
