@@ -4,11 +4,11 @@
 }
 
 #header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   height: 10%;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   h1 {
     font-size: 1.5rem;
@@ -16,53 +16,53 @@
   }
 
   #themes {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 0.8rem;
-    text-transform: uppercase;
     width: 30%;
+    display: flex;
+    font-size: 0.8rem;
     color: $text-white;
+    align-items: center;
+    text-transform: uppercase;
+    justify-content: space-between;
   }
 
   .interactions {
     display: flex;
     position: relative;
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
     justify-content: center;
 
     & > * {
-      display: flex;
-      justify-content: space-around;
-      font-size: 0.6rem;
       width: 100%;
+      display: flex;
+      font-size: 0.6rem;
+      justify-content: space-around;
     }
 
     .labels {
-      top: -0.8rem;
       left: 0;
+      top: -0.8rem;
       position: absolute;
     }
 
     .buttons {
-      position: relative;
       width: 3rem;
+      height: 1rem;
+      position: relative;
       border-radius: 2rem;
       background-color: #333;
-      height: 1rem;
     }
 
     .buttons::before {
-      position: absolute;
-      top: 0.5rem;
       left: 20%;
-      transform: translate(-50%, -50%);
+      top: 0.5rem;
       content: "";
       width: 0.7rem;
       height: 0.7rem;
-      background-color: $key-red-bg;
       border-radius: 50%;
+      position: absolute;
+      background-color: $key-red-bg;
+      transform: translate(-50%, -50%);
     }
 
     .buttons input {
@@ -80,23 +80,49 @@
 
   #display {
     width: 100%;
-    resize: none;
+    height: 15%;
     border: none;
     outline: none;
+    overflow: hidden;
+    position: relative;
     border-radius: 0.5rem;
-    background-color: $screen-bg;
-    color: $text-white;
-    font-size: 2rem;
-    font-weight: bold;
-    font-family: inherit;
-    padding: 1.5rem;
-    text-align: end;
+    background-color: white;
+
+    .record,
+    .memory {
+      opacity: 0.75;
+      font-size: 1rem;
+      color: $key-ligth-bg;
+      position: absolute;
+    }
+
+    .display {
+      height: 100%;
+      display: block;
+      text-align: end;
+      font-size: 2rem;
+      padding: 1.8rem 1rem;
+      font-weight: bold;
+      color: $text-white;
+      font-family: inherit;
+      background-color: $screen-bg;
+    }
+
+    .memory {
+      top: 70%;
+      left: 1%;
+    }
+
+    .record {
+      top: 5%;
+      right: 1%;
+    }
   }
 
   #keyboard {
     display: grid;
     gap: 0 3vw;
-    height: 75%;
+    height: 80%;
     padding: 1rem;
     border-radius: 0.5rem;
     background-color: $second-bg;
@@ -107,7 +133,7 @@
       outline: none;
       padding: 0.5rem;
       font-size: 1.5rem;
-      height: 80%;
+      height: 60%;
       width: 100%;
       color: $text-main;
       text-align: center;
@@ -116,19 +142,33 @@
       border-radius: 0.5rem;
       background-color: $key-ligth-bg;
       box-shadow: 0px 4px 0px $key-light-shadow;
+
+      &:active {
+        transform: scale(0.97);
+        box-shadow: 0px 2px 0px $key-light-shadow;
+      }
     }
 
     .delete,
     .reset {
       color: $text-white;
+      font-size: 1rem;
       background-color: $key-bg;
       box-shadow: 0px 4px 0px $key-shadow;
+
+      &:active {
+        box-shadow: 0px 2px 0px $key-shadow;
+      }
     }
 
     .result {
       color: $text-white;
       background-color: $key-red-bg;
       box-shadow: 0px 4px 0px $key-red-shadow;
+
+      &:active {
+        box-shadow: 0px 2px 0px $key-red-shadow;
+      }
     }
 
     .reset,

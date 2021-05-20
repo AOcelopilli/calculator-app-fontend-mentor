@@ -30,60 +30,60 @@ body {
 }
 
 #header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   height: 10%;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 #header h1 {
   font-size: 1.5rem;
   color: white;
 }
 #header #themes {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 0.8rem;
-  text-transform: uppercase;
   width: 30%;
+  display: flex;
+  font-size: 0.8rem;
   color: white;
+  align-items: center;
+  text-transform: uppercase;
+  justify-content: space-between;
 }
 #header .interactions {
   display: flex;
   position: relative;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
 }
 #header .interactions > * {
-  display: flex;
-  justify-content: space-around;
-  font-size: 0.6rem;
   width: 100%;
+  display: flex;
+  font-size: 0.6rem;
+  justify-content: space-around;
 }
 #header .interactions .labels {
-  top: -0.8rem;
   left: 0;
+  top: -0.8rem;
   position: absolute;
 }
 #header .interactions .buttons {
-  position: relative;
   width: 3rem;
+  height: 1rem;
+  position: relative;
   border-radius: 2rem;
   background-color: #333;
-  height: 1rem;
 }
 #header .interactions .buttons::before {
-  position: absolute;
-  top: 0.5rem;
   left: 20%;
-  transform: translate(-50%, -50%);
+  top: 0.5rem;
   content: "";
   width: 0.7rem;
   height: 0.7rem;
-  background-color: #d03f2f;
   border-radius: 50%;
+  position: absolute;
+  background-color: #d03f2f;
+  transform: translate(-50%, -50%);
 }
 #header .interactions .buttons input {
   opacity: 0;
@@ -98,22 +98,44 @@ body {
 }
 #main #display {
   width: 100%;
-  resize: none;
+  height: 15%;
   border: none;
   outline: none;
+  overflow: hidden;
+  position: relative;
   border-radius: 0.5rem;
-  background-color: #182034;
-  color: white;
-  font-size: 2rem;
-  font-weight: bold;
-  font-family: inherit;
-  padding: 1.5rem;
+  background-color: white;
+}
+#main #display .record,
+#main #display .memory {
+  opacity: 0.75;
+  font-size: 1rem;
+  color: #eae3dc;
+  position: absolute;
+}
+#main #display .display {
+  height: 100%;
+  display: block;
   text-align: end;
+  font-size: 2rem;
+  padding: 1.8rem 1rem;
+  font-weight: bold;
+  color: white;
+  font-family: inherit;
+  background-color: #182034;
+}
+#main #display .memory {
+  top: 70%;
+  left: 1%;
+}
+#main #display .record {
+  top: 5%;
+  right: 1%;
 }
 #main #keyboard {
   display: grid;
   gap: 0 3vw;
-  height: 75%;
+  height: 80%;
   padding: 1rem;
   border-radius: 0.5rem;
   background-color: #232c43;
@@ -124,7 +146,7 @@ body {
   outline: none;
   padding: 0.5rem;
   font-size: 1.5rem;
-  height: 80%;
+  height: 60%;
   width: 100%;
   color: #444b5a;
   text-align: center;
@@ -134,16 +156,28 @@ body {
   background-color: #eae3dc;
   box-shadow: 0px 4px 0px #b4a597;
 }
+#main #keyboard .key:active {
+  transform: scale(0.97);
+  box-shadow: 0px 2px 0px #b4a597;
+}
 #main #keyboard .delete,
 #main #keyboard .reset {
   color: white;
+  font-size: 1rem;
   background-color: #637097;
   box-shadow: 0px 4px 0px #404e72;
+}
+#main #keyboard .delete:active,
+#main #keyboard .reset:active {
+  box-shadow: 0px 2px 0px #404e72;
 }
 #main #keyboard .result {
   color: white;
   background-color: #d03f2f;
   box-shadow: 0px 4px 0px #93261a;
+}
+#main #keyboard .result:active {
+  box-shadow: 0px 2px 0px #93261a;
 }
 #main #keyboard .reset,
 #main #keyboard .result {
