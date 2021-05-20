@@ -1,7 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap");
+/* Background */
+/* Keys */
+/* Text */
 html {
   font-family: "Spartan", sans-serif;
   font-size: 16px;
+  background-color: #3a4764;
 }
 
 body {
@@ -17,21 +21,24 @@ body {
 *::before {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 #calc {
-  width: 90vw;
-  height: 90vh;
-  box-shadow: 0px 0px 1px black;
+  width: 70vw;
+  height: 70vh;
 }
 
 #header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 10%;
+  width: 100%;
 }
 #header h1 {
-  font-size: 36px;
+  font-size: 1.5rem;
+  color: white;
 }
 #header #themes {
   display: flex;
@@ -39,10 +46,12 @@ body {
   justify-content: space-between;
   font-size: 0.8rem;
   text-transform: uppercase;
-  width: 20%;
+  width: 30%;
+  color: white;
 }
 #header .interactions {
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -53,14 +62,19 @@ body {
   font-size: 0.6rem;
   width: 100%;
 }
-#header .buttons {
+#header .interactions .labels {
+  top: -0.8rem;
+  left: 0;
+  position: absolute;
+}
+#header .interactions .buttons {
   position: relative;
   width: 3rem;
   border-radius: 2rem;
   background-color: #333;
   height: 1rem;
 }
-#header .buttons::before {
+#header .interactions .buttons::before {
   position: absolute;
   top: 0.5rem;
   left: 20%;
@@ -68,19 +82,78 @@ body {
   content: "";
   width: 0.7rem;
   height: 0.7rem;
-  background-color: #fff;
+  background-color: #d03f2f;
   border-radius: 50%;
 }
-#header .buttons input {
+#header .interactions .buttons input {
   opacity: 0;
   cursor: pointer;
+}
+
+#main {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#main #display {
+  width: 100%;
+  resize: none;
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+  background-color: #182034;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: inherit;
+  padding: 1.5rem;
+  text-align: end;
+}
+#main #keyboard {
+  display: grid;
+  gap: 0 3vw;
+  height: 75%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: #232c43;
+  grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+}
+#main #keyboard .key {
+  border: none;
+  outline: none;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  height: 80%;
+  width: 100%;
+  color: #444b5a;
+  text-align: center;
+  font-weight: bold;
+  font-family: inherit;
+  border-radius: 0.5rem;
+  background-color: #eae3dc;
+  box-shadow: 0px 4px 0px #b4a597;
+}
+#main #keyboard .delete,
+#main #keyboard .reset {
+  color: white;
+  background-color: #637097;
+  box-shadow: 0px 4px 0px #404e72;
+}
+#main #keyboard .result {
+  color: white;
+  background-color: #d03f2f;
+  box-shadow: 0px 4px 0px #93261a;
+}
+#main #keyboard .reset,
+#main #keyboard .result {
+  grid-column: span 2;
 }
 
 .attribution {
   font-size: 11px;
   text-align: center;
 }
-
 .attribution a {
   color: #3e52a3;
 }

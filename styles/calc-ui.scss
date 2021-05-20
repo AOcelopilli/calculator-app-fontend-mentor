@@ -1,16 +1,18 @@
 #calc {
-  width: 90vw;
-  height: 90vh;
-  box-shadow: 0px 0px 1px black;
+  width: 70vw;
+  height: 70vh;
 }
 
 #header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 10%;
+  width: 100%;
 
   h1 {
-    font-size: 36px;
+    font-size: 1.5rem;
+    color: $text-white;
   }
 
   #themes {
@@ -19,54 +21,128 @@
     justify-content: space-between;
     font-size: 0.8rem;
     text-transform: uppercase;
-    width: 20%;
+    width: 30%;
+    color: $text-white;
   }
 
   .interactions {
     display: flex;
+    position: relative;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
 
-  .interactions > * {
-    display: flex;
-    justify-content: space-around;
-    font-size: 0.6rem;
+    & > * {
+      display: flex;
+      justify-content: space-around;
+      font-size: 0.6rem;
+      width: 100%;
+    }
+
+    .labels {
+      top: -0.8rem;
+      left: 0;
+      position: absolute;
+    }
+
+    .buttons {
+      position: relative;
+      width: 3rem;
+      border-radius: 2rem;
+      background-color: #333;
+      height: 1rem;
+    }
+
+    .buttons::before {
+      position: absolute;
+      top: 0.5rem;
+      left: 20%;
+      transform: translate(-50%, -50%);
+      content: "";
+      width: 0.7rem;
+      height: 0.7rem;
+      background-color: $key-red-bg;
+      border-radius: 50%;
+    }
+
+    .buttons input {
+      opacity: 0;
+      cursor: pointer;
+    }
+  }
+}
+
+#main {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  #display {
     width: 100%;
+    resize: none;
+    border: none;
+    outline: none;
+    border-radius: 0.5rem;
+    background-color: $screen-bg;
+    color: $text-white;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: inherit;
+    padding: 1.5rem;
+    text-align: end;
   }
 
-  .buttons {
-    position: relative;
-    width: 3rem;
-    border-radius: 2rem;
-    background-color: #333;
-    height: 1rem;
-  }
+  #keyboard {
+    display: grid;
+    gap: 0 3vw;
+    height: 75%;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: $second-bg;
+    grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
 
-  .buttons::before {
-    position: absolute;
-    top: 0.5rem;
-    left: 20%;
-    transform: translate(-50%, -50%);
-    content: "";
-    width: 0.7rem;
-    height: 0.7rem;
-    background-color: #fff;
-    border-radius: 50%;
-  }
+    .key {
+      border: none;
+      outline: none;
+      padding: 0.5rem;
+      font-size: 1.5rem;
+      height: 80%;
+      width: 100%;
+      color: $text-main;
+      text-align: center;
+      font-weight: bold;
+      font-family: inherit;
+      border-radius: 0.5rem;
+      background-color: $key-ligth-bg;
+      box-shadow: 0px 4px 0px $key-light-shadow;
+    }
 
-  .buttons input {
-    opacity: 0;
-    cursor: pointer;
+    .delete,
+    .reset {
+      color: $text-white;
+      background-color: $key-bg;
+      box-shadow: 0px 4px 0px $key-shadow;
+    }
+
+    .result {
+      color: $text-white;
+      background-color: $key-red-bg;
+      box-shadow: 0px 4px 0px $key-red-shadow;
+    }
+
+    .reset,
+    .result {
+      grid-column: span 2;
+    }
   }
 }
 
 .attribution {
   font-size: 11px;
   text-align: center;
-}
 
-.attribution a {
-  color: hsl(228, 45%, 44%);
+  a {
+    color: hsl(228, 45%, 44%);
+  }
 }

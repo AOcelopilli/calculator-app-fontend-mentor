@@ -6,24 +6,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+  <link rel="stylesheet" href="styles/main.css">
   <title>Frontend Mentor | Calculator app</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution {
-      font-size: 11px;
-      text-align: center;
-    }
-
-    .attribution a {
-      color: hsl(228, 45%, 44%);
-    }
-  </style>
 </head>
 
 <body>
+  <div id="calc">
+    <header id="header">
+      <h1>calc</h1>
+      <div id="themes">
+        <span>Theme</span>
+        <div class="interactions">
+          <div class="labels">
+            <label for="theme1">1</label><label for="theme2">2</label><label for="theme3">3</label>
+          </div>
+          <div class="buttons">
+            <input type="radio" name="theme1" id="theme1"><input type="radio" name="theme2" id="theme2"><input
+              type="radio" name="theme3" id="theme3">
+          </div>
+        </div>
+      </div>
+    </header>
+    <main id="main">
+      <textarea name="result" id="display" cols="150" rows="1">399,981</textarea>
+      <div id="keyboard">
+        <button class="key number">7</button>
+        <button class="key number">8</button>
+        <button class="key number">9</button>
+        <button class="key delete">DEL</button>
+        <button class="key number">4</button>
+        <button class="key number">5</button>
+        <button class="key number">6</button>
+        <button class="key operation">+</button>
+        <button class="key number">1</button>
+        <button class="key number">2</button>
+        <button class="key number">3</button>
+        <button class="key operation">-</button>
+        <button class="key dot">.</button>
+        <button class="key number">0</button>
+        <button class="key operation">/</button>
+        <button class="key operation">X</button>
+        <button class="key reset">Reset</button>
+        <button class="key result">=</button>
+      </div>
+    </main>
+  </div>
+
 
 
 
