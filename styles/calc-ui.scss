@@ -8,21 +8,34 @@
   width: 100%;
   display: flex;
   align-items: center;
+  color: var(--text-white);
   justify-content: space-between;
 
   h1 {
     font-size: 1.5rem;
-    color: $text-white;
   }
 
   #themes {
+    position: relative;
     width: 30%;
     display: flex;
     font-size: 0.8rem;
-    color: $text-white;
+    color: var(--text-white);
     align-items: center;
     text-transform: uppercase;
     justify-content: space-between;
+
+    &::before {
+      right: 5%;
+      content: "";
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      border-radius: 50%;
+      transition: all 2s ease;
+      background-color: var(--text-white);
+      z-index: -1;
+    }
   }
 
   .interactions {
@@ -50,7 +63,7 @@
       height: 1rem;
       position: relative;
       border-radius: 2rem;
-      background-color: #333;
+      background-color: var(--screen-bg);
     }
 
     .buttons::before {
@@ -61,13 +74,15 @@
       height: 0.7rem;
       border-radius: 50%;
       position: absolute;
-      background-color: $key-red-bg;
+      background-color: var(--key-red-bg);
       transform: translate(-50%, -50%);
+      z-index: 1;
     }
 
     .buttons input {
       opacity: 0;
       cursor: pointer;
+      z-index: 10;
     }
   }
 }
@@ -86,13 +101,13 @@
     overflow: hidden;
     position: relative;
     border-radius: 0.5rem;
-    background-color: white;
+    background-color: var(--text-white);
 
     .record,
     .memory {
       opacity: 0.75;
       font-size: 1rem;
-      color: $key-ligth-bg;
+      color: var(--key-ligth-bg);
       position: absolute;
     }
 
@@ -103,9 +118,9 @@
       font-size: 2rem;
       padding: 1.8rem 1rem;
       font-weight: bold;
-      color: $text-white;
+      color: var(--text-white);
       font-family: inherit;
-      background-color: $screen-bg;
+      background-color: var(--screen-bg);
     }
 
     .memory {
@@ -125,7 +140,7 @@
     height: 80%;
     padding: 1rem;
     border-radius: 0.5rem;
-    background-color: $second-bg;
+    background-color: var(--second-bg);
     grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
 
     .key {
@@ -135,39 +150,39 @@
       font-size: 1.5rem;
       height: 60%;
       width: 100%;
-      color: $text-main;
+      color: var(--text-main);
       text-align: center;
       font-weight: bold;
       font-family: inherit;
       border-radius: 0.5rem;
-      background-color: $key-ligth-bg;
-      box-shadow: 0px 4px 0px $key-light-shadow;
+      background-color: var(--key-ligth-bg);
+      box-shadow: 0px 4px 0px var(--key-light-shadow);
 
       &:active {
         transform: scale(0.97);
-        box-shadow: 0px 2px 0px $key-light-shadow;
+        box-shadow: 0px 2px 0px var(--key-light-shadow);
       }
     }
 
     .delete,
     .reset {
-      color: $text-white;
+      color: var(--text-white);
       font-size: 1rem;
-      background-color: $key-bg;
-      box-shadow: 0px 4px 0px $key-shadow;
+      background-color: var(--key-bg);
+      box-shadow: 0px 4px 0px var(--key-shadow);
 
       &:active {
-        box-shadow: 0px 2px 0px $key-shadow;
+        box-shadow: 0px 2px 0px var(--key-shadow);
       }
     }
 
     .result {
-      color: $text-white;
-      background-color: $key-red-bg;
-      box-shadow: 0px 4px 0px $key-red-shadow;
+      color: var(--text-white);
+      background-color: var(--key-red-bg);
+      box-shadow: 0px 4px 0px var(--key-red-shadow);
 
       &:active {
-        box-shadow: 0px 2px 0px $key-red-shadow;
+        box-shadow: 0px 2px 0px var(--key-red-shadow);
       }
     }
 
@@ -185,4 +200,38 @@
   a {
     color: hsl(228, 45%, 44%);
   }
+}
+
+.theme2 {
+  /* backgrounds */
+  --main-bg: hsl(0, 0%, 90%);
+  --second-bg: hsl(0, 5%, 81%);
+  --screen-bg: hsl(0, 1%, 81%);
+  /* keys */
+  --key-bg: hsl(185, 42%, 37%);
+  --key-shadow: hsl(185, 58%, 25%);
+  --key-red-bg: hsl(25, 98%, 40%);
+  --key-red-shadow: hsl(25, 99%, 27%);
+  --key-ligth-bg: hsl(45, 7%, 89%);
+  --key-light-shadow: hsl(35, 11%, 61%);
+  /* text */
+  --text-main: hsl(60, 10%, 19%);
+  --text-white: hsl(0, 0%, 10%);
+}
+
+.theme3 {
+  /* backgrounds */
+  --main-bg: hsl(268, 75%, 9%);
+  --second-bg: hsl(268, 71%, 12%);
+  --screen-bg: hsl(268, 71%, 12%);
+  /* keys */
+  --key-bg: hsl(281, 89%, 26%);
+  --key-shadow: hsl(285, 91%, 52%);
+  --key-red-bg: hsl(176, 100%, 44%);
+  --key-red-shadow: hsl(177, 92%, 70%);
+  --key-ligth-bg: hsl(268, 47%, 21%);
+  --key-light-shadow: hsl(290, 70%, 36%);
+  /* text */
+  --text-main: hsl(52, 100%, 62%);
+  --text-white: hsl(52, 100%, 62%);
 }

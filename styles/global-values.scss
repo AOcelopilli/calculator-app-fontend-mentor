@@ -1,23 +1,37 @@
 @import url("https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap");
-/* Background */
-$main-bg: hsl(222, 26%, 31%);
-$second-bg: hsl(223, 31%, 20%);
+/* theme1 */
+/* $main-bg: hsl(222, 26%, 31%); */
+/* $second-bg: hsl(223, 31%, 20%);
 $screen-bg: hsl(224, 36%, 15%);
-/* Keys */
 $key-bg: hsl(225, 21%, 49%);
 $key-shadow: hsl(224, 28%, 35%);
 $key-red-bg: hsl(6, 63%, 50%);
 $key-red-shadow: hsl(6, 70%, 34%);
 $key-ligth-bg: hsl(30, 25%, 89%);
 $key-light-shadow: hsl(28, 16%, 65%);
-/* Text */
 $text-main: hsl(221, 14%, 31%);
-$text-white: hsl(0, 0, 100%);
+$text-white: hsl(0, 0, 100%); */
+/* theme2 */
+:root {
+  --main-bg: hsl(223, 31%, 20%);
+  --second-bg: hsl(224, 36%, 15%);
+  --screen-bg: hsl(224, 36%, 15%);
+  --key-bg: hsl(225, 21%, 49%);
+  --key-shadow: hsl(224, 28%, 35%);
+  --key-red-bg: hsl(6, 63%, 50%);
+  --key-red-shadow: hsl(6, 70%, 34%);
+  --key-ligth-bg: hsl(30, 25%, 89%);
+  --key-light-shadow: hsl(28, 16%, 65%);
+  --text-main: hsl(221, 14%, 31%);
+  --text-white: hsl(0, 0%, 100%);
+}
 
 html {
+  position: relative;
   font-family: "Spartan", sans-serif;
   font-size: 16px;
-  background-color: $main-bg;
+  background-color: var(--main-bg);
+  transition: background-color 0.3s ease;
 }
 
 body {

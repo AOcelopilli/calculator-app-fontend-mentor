@@ -1,37 +1,27 @@
 const d = document,
+  $root = d.querySelector("html"),
   $btns = d.querySelectorAll(".number"),
   $display = d.querySelector(".display"),
   $memory = d.querySelector(".memory"),
   $record = d.querySelector(".record");
 
-let valueA = "",
-  valueB = "",
-  operation,
+let operation,
   changed = 0,
-  A = 0,
-  B = 0,
+  A = "",
+  B = "",
   result = 0;
 
 d.addEventListener("click", (e) => {
   if (e.target.classList.contains("number") && changed == 0) {
-    valueA += e.target.innerText;
-    A = new Intl.NumberFormat().format(valueA);
-    $display.innerText = A;
+    A = getValue(e, A);
   } else if (e.target.classList.contains("number") && changed == 1) {
-    valueB += e.target.innerText;
-    B = new Intl.NumberFormat().format(valueB);
-    console.log(B);
-    $display.innerText = B;
+    B = getValue(e, B);
   }
 
   if (e.target.classList.contains("dot") && changed == 0) {
-    valueA += ".";
-    A = new Intl.NumberFormat().format(valueA);
-    $display.innerText = A;
+    A = addDot(A);
   } else if (e.target.classList.contains("dot") && changed == 1) {
-    valueB += ".";
-    B = new Intl.NumberFormat().format(valueB);
-    $display.innerText = B;
+    B = addDot(B);
   }
 
   if (e.target.classList.contains("operation") && A != 0) {
@@ -44,54 +34,96 @@ d.addEventListener("click", (e) => {
   }
 
   if (e.target.classList.contains("delete") && changed == 0) {
-    valueA = 0;
-    $display.innerText = 0;
+    A = deleteBtn();
   } else if (e.target.classList.contains("delete") && changed == 1) {
-    valueB = 0;
-    $display.innerText = 0;
+    B = deleteBtn();
   }
 
   if (e.target.classList.contains("reset")) {
-    valueA = "";
-    valueB = "";
-    A = 0;
-    B = 0;
-    changed = 0;
-
-    $display.innerText = "0";
-    $memory.innerText = "";
-    $record.innerText = "";
+    reset();
   }
 
   if (e.target.classList.contains("result") && A != 0 && B != 0) {
     switch (operation) {
       case "+":
         result = parseFloat(A) + parseFloat(B);
-        $memory.innerText = "";
-        $record.innerText = "";
-        $display.innerText = result;
+        reset();
+        $display.innerText = valueFormated = new Intl.NumberFormat().format(
+          result
+        );
         break;
       case "-":
         result = parseFloat(A) - parseFloat(B);
-        $memory.innerText = "";
-        $record.innerText = "";
-        $display.innerText = result;
+        reset();
+        $display.innerText = valueFormated = new Intl.NumberFormat().format(
+          result
+        );
         break;
       case "X":
         result = parseFloat(A) * parseFloat(B);
-        $memory.innerText = "";
-        $record.innerText = "";
-        $display.innerText = result;
+        reset();
+        $display.innerText = valueFormated = new Intl.NumberFormat().format(
+          result
+        );
         break;
       case "/":
         result = parseFloat(A) / parseFloat(B);
-        $memory.innerText = "";
-        $record.innerText = "";
-        $display.innerText = result;
+        reset();
+        $display.innerText = valueFormated = new Intl.NumberFormat().format(
+          result
+        );
         break;
     }
   }
 
-  console.log("Letra A: ", A);
+  /* console.log("Letra A: ", A);
   console.log("Letra B: ", B);
+  console.log("Cambio: ", changed); */
 });
+
+d.addEventListener("change", (e) => {
+  console.log(e.target.id);
+
+  if (e.target.id == "theme2") {
+    $root.classList.remove("theme1");
+    $root.classList.remove("theme3");
+    $root.classList.add("theme2");
+  } else if (e.target.id == "theme3") {
+    $root.classList.remove("theme1");
+    $root.classList.remove("theme2");
+    $root.classList.add("theme3");
+  } else if (e.target.id == "theme1") {
+    $root.classList.remove("theme2");
+    $root.classList.remove("theme3");
+    $root.classList.add("theme1");
+  }
+});
+
+const addDot = (number) => {
+  number += ".";
+  $display.innerText = number;
+  return number;
+};
+
+const getValue = (number, value) => {
+  value += number.target.innerText;
+
+  $display.innerText = new Intl.NumberFormat().format(value);
+  return value;
+};
+
+const reset = () => {
+  A = "";
+  B = "";
+  changed = 0;
+
+  $display.innerText = "0";
+  $memory.innerText = "";
+  $record.innerText = "";
+};
+
+const deleteBtn = (number) => {
+  number = "";
+  $display.innerText = 0;
+  return number;
+};

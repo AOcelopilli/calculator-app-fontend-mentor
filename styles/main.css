@@ -1,11 +1,37 @@
 @import url("https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap");
-/* Background */
-/* Keys */
-/* Text */
+/* theme1 */
+/* $main-bg: hsl(222, 26%, 31%); */
+/* $second-bg: hsl(223, 31%, 20%);
+$screen-bg: hsl(224, 36%, 15%);
+$key-bg: hsl(225, 21%, 49%);
+$key-shadow: hsl(224, 28%, 35%);
+$key-red-bg: hsl(6, 63%, 50%);
+$key-red-shadow: hsl(6, 70%, 34%);
+$key-ligth-bg: hsl(30, 25%, 89%);
+$key-light-shadow: hsl(28, 16%, 65%);
+$text-main: hsl(221, 14%, 31%);
+$text-white: hsl(0, 0, 100%); */
+/* theme2 */
+:root {
+  --main-bg: hsl(223, 31%, 20%);
+  --second-bg: hsl(224, 36%, 15%);
+  --screen-bg: hsl(224, 36%, 15%);
+  --key-bg: hsl(225, 21%, 49%);
+  --key-shadow: hsl(224, 28%, 35%);
+  --key-red-bg: hsl(6, 63%, 50%);
+  --key-red-shadow: hsl(6, 70%, 34%);
+  --key-ligth-bg: hsl(30, 25%, 89%);
+  --key-light-shadow: hsl(28, 16%, 65%);
+  --text-main: hsl(221, 14%, 31%);
+  --text-white: hsl(0, 0%, 100%);
+}
+
 html {
+  position: relative;
   font-family: "Spartan", sans-serif;
   font-size: 16px;
-  background-color: #3a4764;
+  background-color: var(--main-bg);
+  transition: background-color 0.3s ease;
 }
 
 body {
@@ -34,20 +60,32 @@ body {
   width: 100%;
   display: flex;
   align-items: center;
+  color: var(--text-white);
   justify-content: space-between;
 }
 #header h1 {
   font-size: 1.5rem;
-  color: white;
 }
 #header #themes {
+  position: relative;
   width: 30%;
   display: flex;
   font-size: 0.8rem;
-  color: white;
+  color: var(--text-white);
   align-items: center;
   text-transform: uppercase;
   justify-content: space-between;
+}
+#header #themes::before {
+  right: 5%;
+  content: "";
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  border-radius: 50%;
+  transition: all 2s ease;
+  background-color: var(--text-white);
+  z-index: -1;
 }
 #header .interactions {
   display: flex;
@@ -72,7 +110,7 @@ body {
   height: 1rem;
   position: relative;
   border-radius: 2rem;
-  background-color: #333;
+  background-color: var(--screen-bg);
 }
 #header .interactions .buttons::before {
   left: 20%;
@@ -82,12 +120,14 @@ body {
   height: 0.7rem;
   border-radius: 50%;
   position: absolute;
-  background-color: #d03f2f;
+  background-color: var(--key-red-bg);
   transform: translate(-50%, -50%);
+  z-index: 1;
 }
 #header .interactions .buttons input {
   opacity: 0;
   cursor: pointer;
+  z-index: 10;
 }
 
 #main {
@@ -104,13 +144,13 @@ body {
   overflow: hidden;
   position: relative;
   border-radius: 0.5rem;
-  background-color: white;
+  background-color: var(--text-white);
 }
 #main #display .record,
 #main #display .memory {
   opacity: 0.75;
   font-size: 1rem;
-  color: #eae3dc;
+  color: var(--key-ligth-bg);
   position: absolute;
 }
 #main #display .display {
@@ -120,9 +160,9 @@ body {
   font-size: 2rem;
   padding: 1.8rem 1rem;
   font-weight: bold;
-  color: white;
+  color: var(--text-white);
   font-family: inherit;
-  background-color: #182034;
+  background-color: var(--screen-bg);
 }
 #main #display .memory {
   top: 70%;
@@ -138,7 +178,7 @@ body {
   height: 80%;
   padding: 1rem;
   border-radius: 0.5rem;
-  background-color: #232c43;
+  background-color: var(--second-bg);
   grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
 }
 #main #keyboard .key {
@@ -148,36 +188,36 @@ body {
   font-size: 1.5rem;
   height: 60%;
   width: 100%;
-  color: #444b5a;
+  color: var(--text-main);
   text-align: center;
   font-weight: bold;
   font-family: inherit;
   border-radius: 0.5rem;
-  background-color: #eae3dc;
-  box-shadow: 0px 4px 0px #b4a597;
+  background-color: var(--key-ligth-bg);
+  box-shadow: 0px 4px 0px var(--key-light-shadow);
 }
 #main #keyboard .key:active {
   transform: scale(0.97);
-  box-shadow: 0px 2px 0px #b4a597;
+  box-shadow: 0px 2px 0px var(--key-light-shadow);
 }
 #main #keyboard .delete,
 #main #keyboard .reset {
-  color: white;
+  color: var(--text-white);
   font-size: 1rem;
-  background-color: #637097;
-  box-shadow: 0px 4px 0px #404e72;
+  background-color: var(--key-bg);
+  box-shadow: 0px 4px 0px var(--key-shadow);
 }
 #main #keyboard .delete:active,
 #main #keyboard .reset:active {
-  box-shadow: 0px 2px 0px #404e72;
+  box-shadow: 0px 2px 0px var(--key-shadow);
 }
 #main #keyboard .result {
-  color: white;
-  background-color: #d03f2f;
-  box-shadow: 0px 4px 0px #93261a;
+  color: var(--text-white);
+  background-color: var(--key-red-bg);
+  box-shadow: 0px 4px 0px var(--key-red-shadow);
 }
 #main #keyboard .result:active {
-  box-shadow: 0px 2px 0px #93261a;
+  box-shadow: 0px 2px 0px var(--key-red-shadow);
 }
 #main #keyboard .reset,
 #main #keyboard .result {
@@ -190,6 +230,40 @@ body {
 }
 .attribution a {
   color: #3e52a3;
+}
+
+.theme2 {
+  /* backgrounds */
+  --main-bg: hsl(0, 0%, 90%);
+  --second-bg: hsl(0, 5%, 81%);
+  --screen-bg: hsl(0, 1%, 81%);
+  /* keys */
+  --key-bg: hsl(185, 42%, 37%);
+  --key-shadow: hsl(185, 58%, 25%);
+  --key-red-bg: hsl(25, 98%, 40%);
+  --key-red-shadow: hsl(25, 99%, 27%);
+  --key-ligth-bg: hsl(45, 7%, 89%);
+  --key-light-shadow: hsl(35, 11%, 61%);
+  /* text */
+  --text-main: hsl(60, 10%, 19%);
+  --text-white: hsl(0, 0%, 10%);
+}
+
+.theme3 {
+  /* backgrounds */
+  --main-bg: hsl(268, 75%, 9%);
+  --second-bg: hsl(268, 71%, 12%);
+  --screen-bg: hsl(268, 71%, 12%);
+  /* keys */
+  --key-bg: hsl(281, 89%, 26%);
+  --key-shadow: hsl(285, 91%, 52%);
+  --key-red-bg: hsl(176, 100%, 44%);
+  --key-red-shadow: hsl(177, 92%, 70%);
+  --key-ligth-bg: hsl(268, 47%, 21%);
+  --key-light-shadow: hsl(290, 70%, 36%);
+  /* text */
+  --text-main: hsl(52, 100%, 62%);
+  --text-white: hsl(52, 100%, 62%);
 }
 
 /*# sourceMappingURL=main.css.map */
