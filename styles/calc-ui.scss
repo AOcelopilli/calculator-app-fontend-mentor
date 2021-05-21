@@ -1,40 +1,38 @@
 #calc {
-  width: 70vw;
-  height: 70vh;
+  width: 40vw;
+  height: 80vh;
+  transition: background-color 0.5s ease;
+
+  @media (max-width: 600px) {
+    width: 90vw;
+  }
 }
 
 #header {
   height: 10%;
   width: 100%;
   display: flex;
+  color: var(--text-second);
   align-items: center;
-  color: var(--text-white);
   justify-content: space-between;
+  transition: color 0.5s ease;
 
   h1 {
-    font-size: 1.5rem;
+    font-size: calc(1.8rem + 1vw);
   }
 
   #themes {
-    position: relative;
-    width: 30%;
+    width: auto;
     display: flex;
-    font-size: 0.8rem;
-    color: var(--text-white);
+    font-size: 1rem;
+    position: relative;
     align-items: center;
     text-transform: uppercase;
     justify-content: space-between;
 
-    &::before {
-      right: 5%;
-      content: "";
-      width: 10px;
-      height: 10px;
-      position: absolute;
-      border-radius: 50%;
-      transition: all 2s ease;
-      background-color: var(--text-white);
-      z-index: -1;
+    span {
+      font-size: calc(0.3rem + 1vw);
+      margin-right: 0.5rem;
     }
   }
 
@@ -48,35 +46,46 @@
     & > * {
       width: 100%;
       display: flex;
-      font-size: 0.6rem;
+      font-size: calc(0.3rem + 1vh);
       justify-content: space-around;
     }
-
+    /* radio btns numbers */
     .labels {
       left: 0;
       top: -0.8rem;
       position: absolute;
     }
-
+    /* Radio btns */
     .buttons {
       width: 3rem;
-      height: 1rem;
+      height: 1.2rem;
       position: relative;
+      padding: 0.5rem;
       border-radius: 2rem;
-      background-color: var(--screen-bg);
-    }
+      background-color: var(--toggle-bg);
+      transition: background-color 0.5s ease;
 
-    .buttons::before {
-      left: 20%;
-      top: 0.5rem;
-      content: "";
-      width: 0.7rem;
-      height: 0.7rem;
-      border-radius: 50%;
-      position: absolute;
-      background-color: var(--key-red-bg);
-      transform: translate(-50%, -50%);
-      z-index: 1;
+      /* effect change of theme */
+
+      &::before,
+      &::after {
+        top: 50%;
+        left: 20%;
+        z-index: 1;
+        content: "";
+        width: 0.7rem;
+        height: 0.7rem;
+        position: absolute;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 0.3s ease;
+        background-color: var(--key2-toggle-bg);
+      }
+
+      &::before {
+        z-index: -1;
+        background-color: transparent;
+      }
     }
 
     .buttons input {
@@ -95,32 +104,36 @@
 
   #display {
     width: 100%;
-    height: 15%;
+    height: 18%;
     border: none;
     outline: none;
     overflow: hidden;
     position: relative;
     border-radius: 0.5rem;
-    background-color: var(--text-white);
+    color: var(--text-second);
+    background-color: var(--screen-bg);
+    transition: background-color 0.5s ease, color 0.5s ease;
 
     .record,
     .memory {
       opacity: 0.75;
       font-size: 1rem;
-      color: var(--key-ligth-bg);
       position: absolute;
     }
 
     .display {
-      height: 100%;
+      position: absolute;
+      height: auto;
+      top: 70%;
+      right: 2%;
+      width: 100%;
+      margin: 0 auto;
       display: block;
       text-align: end;
-      font-size: 2rem;
-      padding: 1.8rem 1rem;
+      font-size: calc(2rem + 1vw);
       font-weight: bold;
-      color: var(--text-white);
       font-family: inherit;
-      background-color: var(--screen-bg);
+      transform: translate(0%, -50%);
     }
 
     .memory {
@@ -136,102 +149,258 @@
 
   #keyboard {
     display: grid;
-    gap: 0 3vw;
     height: 80%;
     padding: 1rem;
     border-radius: 0.5rem;
-    background-color: var(--second-bg);
-    grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+    justify-items: center;
+    background-color: var(--keypad-bg);
+    transition: color 0.5s ease;
+    grid-template-columns: repeat(auto-fit, minmax(24%, 1fr));
 
     .key {
       border: none;
       outline: none;
       padding: 0.5rem;
-      font-size: 1.5rem;
-      height: 60%;
-      width: 100%;
-      color: var(--text-main);
+      font-size: calc(1rem + 1.2vw);
+      height: 70%;
+      width: 80%;
       text-align: center;
       font-weight: bold;
       font-family: inherit;
       border-radius: 0.5rem;
-      background-color: var(--key-ligth-bg);
-      box-shadow: 0px 4px 0px var(--key-light-shadow);
+      color: var(--text-main);
+      background-color: var(--key3-bg);
+      transition: background-color 0.5s ease, color 0.5s ease;
+      box-shadow: 0px 4px 0px var(--key3-shadow);
 
       &:active {
         transform: scale(0.97);
-        box-shadow: 0px 2px 0px var(--key-light-shadow);
+        box-shadow: 0px 2px 0px var(--key3-shadow);
       }
     }
 
     .delete,
     .reset {
-      color: var(--text-white);
-      font-size: 1rem;
-      background-color: var(--key-bg);
-      box-shadow: 0px 4px 0px var(--key-shadow);
+      font-size: calc(0.5rem + 1vw);
+      color: var(--text-second);
+      background-color: var(--key1-bg);
+      transition: background-color 0.5s ease, color 0.5s ease;
+      box-shadow: 0px 4px 0px var(--key1-shadow);
 
       &:active {
-        box-shadow: 0px 2px 0px var(--key-shadow);
+        box-shadow: 0px 2px 0px var(--key1-shadow);
       }
     }
 
     .result {
-      color: var(--text-white);
-      background-color: var(--key-red-bg);
-      box-shadow: 0px 4px 0px var(--key-red-shadow);
-
+      color: var(--text-second);
+      background-color: var(--key2-bg);
+      transition: background-color 0.5s ease, color 0.5s ease;
+      box-shadow: 0px 4px 0px var(--key2-shadow);
       &:active {
-        box-shadow: 0px 2px 0px var(--key-red-shadow);
+        box-shadow: 0px 2px 0px var(--key2-shadow);
       }
     }
 
     .reset,
     .result {
+      width: 90%;
       grid-column: span 2;
     }
   }
 }
 
 .attribution {
+  margin-top: 2rem;
   font-size: 11px;
   text-align: center;
+  color: var(--text-second);
+  transition: color 0.5s ease;
 
   a {
-    color: hsl(228, 45%, 44%);
+    color: var(--key1-bg);
+    transition: color 0.5s ease;
+  }
+}
+
+.theme1 {
+  animation: changeColorsTheme1 0.1s ease-out 0.5s forwards;
+
+  @keyframes changeColorsTheme1 {
+    0% {
+    }
+
+    100% {
+      --main-bg: hsl(222, 26%, 31%);
+      --toggle-bg: hsl(223, 31%, 20%);
+      --keypad-bg: hsl(223, 31%, 20%);
+      --screen-bg: hsl(224, 36%, 15%);
+      --key1-bg: hsl(225, 21%, 49%);
+      --key1-shadow: hsl(224, 28%, 35%);
+      --key2-bg: hsl(6, 63%, 50%);
+      --key2-toggle-bg: hsl(6, 63%, 50%);
+      --key2-shadow: hsl(6, 70%, 34%);
+      --key3-bg: hsl(30, 25%, 89%);
+      --key3-shadow: hsl(28, 16%, 65%);
+      --text-main: hsl(221, 14%, 31%);
+      --text-second: hsl(0, 0%, 100%);
+      --text-third: hsl(0, 0%, 100%);
+    }
+  }
+
+  #header,
+  #display > * {
+    color: var(--text-second);
+  }
+
+  #themes .buttons::after {
+    left: 20%;
+  }
+
+  #header .interactions .buttons::before {
+    animation: themeCircleTheme1 2s;
+  }
+
+  @keyframes themeCircleTheme1 {
+    0% {
+      width: 0vh;
+      height: 0vh;
+      background-color: hsl(221, 26%, 44%);
+    }
+
+    90% {
+      width: 400vh;
+      height: 400vh;
+      background-color: hsl(222, 26%, 31%);
+    }
+
+    100% {
+      width: 0vh;
+      height: 0vh;
+      background-color: transparent;
+    }
   }
 }
 
 .theme2 {
-  /* backgrounds */
-  --main-bg: hsl(0, 0%, 90%);
-  --second-bg: hsl(0, 5%, 81%);
-  --screen-bg: hsl(0, 1%, 81%);
-  /* keys */
-  --key-bg: hsl(185, 42%, 37%);
-  --key-shadow: hsl(185, 58%, 25%);
-  --key-red-bg: hsl(25, 98%, 40%);
-  --key-red-shadow: hsl(25, 99%, 27%);
-  --key-ligth-bg: hsl(45, 7%, 89%);
-  --key-light-shadow: hsl(35, 11%, 61%);
-  /* text */
-  --text-main: hsl(60, 10%, 19%);
-  --text-white: hsl(0, 0%, 10%);
+  animation: changeColorsTheme2 0.1s ease-out 0.5s forwards;
+
+  @keyframes changeColorsTheme2 {
+    0% {
+    }
+
+    100% {
+      --main-bg: hsl(0, 0%, 90%);
+      --toggle-bg: hsl(0, 5%, 81%);
+      --keypad-bg: hsl(0, 5%, 81%);
+      --screen-bg: hsl(0, 0%, 93%);
+      --key1-bg: hsl(185, 42%, 37%);
+      --key1-shadow: hsl(185, 58%, 25%);
+      --key2-bg: hsl(25, 98%, 40%);
+      --key2-toggle-bg: hsl(25, 98%, 40%);
+      --key2-shadow: hsl(25, 99%, 27%);
+      --key3-bg: hsl(45, 7%, 89%);
+      --key3-shadow: hsl(35, 11%, 61%);
+      --text-main: hsl(60, 10%, 19%);
+      --text-second: hsl(0, 0%, 100%);
+      --text-third: hsl(0, 0%, 100%);
+    }
+  }
+
+  #header,
+  #display > * {
+    color: var(--text-main);
+  }
+
+  #themes .buttons::after {
+    left: 50%;
+  }
+
+  #header .interactions .buttons::before {
+    animation: themeCircleTheme2 2s;
+  }
+
+  @keyframes themeCircleTheme2 {
+    0% {
+      width: 0vh;
+      height: 0vh;
+      background-color: hsl(0, 0%, 90%);
+    }
+
+    90% {
+      width: 400vh;
+      height: 400vh;
+      background-color: hsl(0, 0%, 90%);
+    }
+
+    100% {
+      width: 0vh;
+      height: 0vh;
+      background-color: transparent;
+    }
+  }
 }
 
 .theme3 {
-  /* backgrounds */
-  --main-bg: hsl(268, 75%, 9%);
-  --second-bg: hsl(268, 71%, 12%);
-  --screen-bg: hsl(268, 71%, 12%);
-  /* keys */
-  --key-bg: hsl(281, 89%, 26%);
-  --key-shadow: hsl(285, 91%, 52%);
-  --key-red-bg: hsl(176, 100%, 44%);
-  --key-red-shadow: hsl(177, 92%, 70%);
-  --key-ligth-bg: hsl(268, 47%, 21%);
-  --key-light-shadow: hsl(290, 70%, 36%);
-  /* text */
-  --text-main: hsl(52, 100%, 62%);
-  --text-white: hsl(52, 100%, 62%);
+  animation: changeColorsTheme3 0.1s ease-out 0.5s forwards;
+
+  @keyframes changeColorsTheme3 {
+    0% {
+    }
+
+    100% {
+      --main-bg: hsl(268, 75%, 9%);
+      --toggle-bg: hsl(268, 71%, 12%);
+      --keypad-bg: hsl(268, 71%, 12%);
+      --screen-bg: hsl(268, 71%, 12%);
+      --key1-bg: hsl(281, 89%, 26%);
+      --key1-shadow: hsl(285, 91%, 52%);
+      --key2-bg: hsl(176, 91%, 52%);
+      --key2-toggle-bg: hsl(176, 100%, 44%);
+      --key2-shadow: hsl(177, 92%, 70%);
+      --key3-bg: hsl(268, 47%, 21%);
+      --key3-shadow: hsl(290, 70%, 36%);
+      --text-main: hsl(52, 100%, 62%);
+      --text-second: hsl(198, 20%, 13%);
+      --text-third: hsl(0, 0%, 100%);
+    }
+  }
+
+  #header,
+  #display > * {
+    color: var(--text-main);
+  }
+
+  #themes .buttons::after {
+    left: 79%;
+  }
+
+  #main #keyboard .delete,
+  #main #keyboard .reset {
+    color: var(--text-third);
+  }
+
+  #header .interactions .buttons::before {
+    animation: themeCircleTheme3 2s;
+  }
+
+  @keyframes themeCircleTheme3 {
+    0% {
+      width: 0;
+      height: 0;
+      background-color: hsl(268, 75%, 9%);
+    }
+
+    80% {
+      width: 400vh;
+      height: 400vh;
+      background-color: hsl(268, 75%, 9%);
+    }
+
+    100% {
+      width: 400vh;
+      height: 400vh;
+      background-color: transparent;
+    }
+  }
 }
