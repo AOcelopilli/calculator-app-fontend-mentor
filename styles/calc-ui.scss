@@ -1,10 +1,11 @@
 #calc {
   width: 40vw;
   height: 80vh;
-  transition: background-color 0.5s ease;
+  transition: background-color 0.3s ease;
 
-  @media (max-width: 600px) {
+  @media (max-width: 690px) {
     width: 90vw;
+    height: 95vh;
   }
 }
 
@@ -15,7 +16,7 @@
   color: var(--text-second);
   align-items: center;
   justify-content: space-between;
-  transition: color 0.5s ease;
+  transition: color 0.3s ease;
 
   h1 {
     font-size: calc(1.8rem + 1vw);
@@ -63,7 +64,7 @@
       padding: 0.5rem;
       border-radius: 2rem;
       background-color: var(--toggle-bg);
-      transition: background-color 0.5s ease;
+      transition: background-color 0.3s ease;
 
       /* effect change of theme */
 
@@ -112,7 +113,7 @@
     border-radius: 0.5rem;
     color: var(--text-second);
     background-color: var(--screen-bg);
-    transition: background-color 0.5s ease, color 0.5s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
 
     .record,
     .memory {
@@ -154,7 +155,7 @@
     border-radius: 0.5rem;
     justify-items: center;
     background-color: var(--keypad-bg);
-    transition: color 0.5s ease;
+    transition: color 0.3s ease;
     grid-template-columns: repeat(auto-fit, minmax(24%, 1fr));
 
     .key {
@@ -170,7 +171,7 @@
       border-radius: 0.5rem;
       color: var(--text-main);
       background-color: var(--key3-bg);
-      transition: background-color 0.5s ease, color 0.5s ease;
+      transition: background-color 0.3s ease, color 0.3s ease;
       box-shadow: 0px 4px 0px var(--key3-shadow);
 
       &:active {
@@ -184,7 +185,7 @@
       font-size: calc(0.5rem + 1vw);
       color: var(--text-second);
       background-color: var(--key1-bg);
-      transition: background-color 0.5s ease, color 0.5s ease;
+      transition: background-color 0.3s ease, color 0.3s ease;
       box-shadow: 0px 4px 0px var(--key1-shadow);
 
       &:active {
@@ -195,7 +196,7 @@
     .result {
       color: var(--text-second);
       background-color: var(--key2-bg);
-      transition: background-color 0.5s ease, color 0.5s ease;
+      transition: background-color 0.3s ease, color 0.3s ease;
       box-shadow: 0px 4px 0px var(--key2-shadow);
       &:active {
         box-shadow: 0px 2px 0px var(--key2-shadow);
@@ -214,40 +215,16 @@
   margin-top: 2rem;
   font-size: 11px;
   text-align: center;
-  color: var(--text-second);
-  transition: color 0.5s ease;
+  color: var(--key1-bg);
+  transition: color 0.3s ease;
 
   a {
-    color: var(--key1-bg);
-    transition: color 0.5s ease;
+    color: var(--key2-bg);
+    transition: color 0.3s ease;
   }
 }
 
 .theme1 {
-  animation: changeColorsTheme1 0.1s ease-out 0.5s forwards;
-
-  @keyframes changeColorsTheme1 {
-    0% {
-    }
-
-    100% {
-      --main-bg: hsl(222, 26%, 31%);
-      --toggle-bg: hsl(223, 31%, 20%);
-      --keypad-bg: hsl(223, 31%, 20%);
-      --screen-bg: hsl(224, 36%, 15%);
-      --key1-bg: hsl(225, 21%, 49%);
-      --key1-shadow: hsl(224, 28%, 35%);
-      --key2-bg: hsl(6, 63%, 50%);
-      --key2-toggle-bg: hsl(6, 63%, 50%);
-      --key2-shadow: hsl(6, 70%, 34%);
-      --key3-bg: hsl(30, 25%, 89%);
-      --key3-shadow: hsl(28, 16%, 65%);
-      --text-main: hsl(221, 14%, 31%);
-      --text-second: hsl(0, 0%, 100%);
-      --text-third: hsl(0, 0%, 100%);
-    }
-  }
-
   #header,
   #display > * {
     color: var(--text-second);
@@ -255,10 +232,11 @@
 
   #themes .buttons::after {
     left: 20%;
+    background-color: hsl(6, 63%, 50%);
   }
 
   #header .interactions .buttons::before {
-    animation: themeCircleTheme1 2s;
+    animation: themeCircleTheme1 2s forwards;
   }
 
   @keyframes themeCircleTheme1 {
@@ -275,38 +253,12 @@
     }
 
     100% {
-      width: 0vh;
-      height: 0vh;
       background-color: transparent;
     }
   }
 }
 
 .theme2 {
-  animation: changeColorsTheme2 0.1s ease-out 0.5s forwards;
-
-  @keyframes changeColorsTheme2 {
-    0% {
-    }
-
-    100% {
-      --main-bg: hsl(0, 0%, 90%);
-      --toggle-bg: hsl(0, 5%, 81%);
-      --keypad-bg: hsl(0, 5%, 81%);
-      --screen-bg: hsl(0, 0%, 93%);
-      --key1-bg: hsl(185, 42%, 37%);
-      --key1-shadow: hsl(185, 58%, 25%);
-      --key2-bg: hsl(25, 98%, 40%);
-      --key2-toggle-bg: hsl(25, 98%, 40%);
-      --key2-shadow: hsl(25, 99%, 27%);
-      --key3-bg: hsl(45, 7%, 89%);
-      --key3-shadow: hsl(35, 11%, 61%);
-      --text-main: hsl(60, 10%, 19%);
-      --text-second: hsl(0, 0%, 100%);
-      --text-third: hsl(0, 0%, 100%);
-    }
-  }
-
   #header,
   #display > * {
     color: var(--text-main);
@@ -314,10 +266,11 @@
 
   #themes .buttons::after {
     left: 50%;
+    background-color: hsl(25, 98%, 40%);
   }
 
   #header .interactions .buttons::before {
-    animation: themeCircleTheme2 2s;
+    animation: themeCircleTheme2 2s forwards;
   }
 
   @keyframes themeCircleTheme2 {
@@ -334,38 +287,12 @@
     }
 
     100% {
-      width: 0vh;
-      height: 0vh;
       background-color: transparent;
     }
   }
 }
 
 .theme3 {
-  animation: changeColorsTheme3 0.1s ease-out 0.5s forwards;
-
-  @keyframes changeColorsTheme3 {
-    0% {
-    }
-
-    100% {
-      --main-bg: hsl(268, 75%, 9%);
-      --toggle-bg: hsl(268, 71%, 12%);
-      --keypad-bg: hsl(268, 71%, 12%);
-      --screen-bg: hsl(268, 71%, 12%);
-      --key1-bg: hsl(281, 89%, 26%);
-      --key1-shadow: hsl(285, 91%, 52%);
-      --key2-bg: hsl(176, 91%, 52%);
-      --key2-toggle-bg: hsl(176, 100%, 44%);
-      --key2-shadow: hsl(177, 92%, 70%);
-      --key3-bg: hsl(268, 47%, 21%);
-      --key3-shadow: hsl(290, 70%, 36%);
-      --text-main: hsl(52, 100%, 62%);
-      --text-second: hsl(198, 20%, 13%);
-      --text-third: hsl(0, 0%, 100%);
-    }
-  }
-
   #header,
   #display > * {
     color: var(--text-main);
@@ -373,6 +300,7 @@
 
   #themes .buttons::after {
     left: 79%;
+    background-color: hsl(176, 100%, 44%);
   }
 
   #main #keyboard .delete,
@@ -381,7 +309,7 @@
   }
 
   #header .interactions .buttons::before {
-    animation: themeCircleTheme3 2s;
+    animation: themeCircleTheme3 2s forwards;
   }
 
   @keyframes themeCircleTheme3 {
@@ -398,8 +326,6 @@
     }
 
     100% {
-      width: 400vh;
-      height: 400vh;
       background-color: transparent;
     }
   }
