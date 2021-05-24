@@ -53,13 +53,13 @@
     /* radio btns numbers */
     .labels {
       left: 0;
-      top: -0.8rem;
+      top: -1rem;
       position: absolute;
     }
     /* Radio btns */
     .buttons {
-      width: 3rem;
-      height: 1.2rem;
+      width: 4rem;
+      height: 1.5rem;
       position: relative;
       padding: 0.5rem;
       border-radius: 2rem;
@@ -74,8 +74,8 @@
         left: 20%;
         z-index: 1;
         content: "";
-        width: 0.7rem;
-        height: 0.7rem;
+        width: 1rem;
+        height: 1rem;
         position: absolute;
         border-radius: 50%;
         transform: translate(-50%, -50%);
@@ -91,6 +91,8 @@
 
     .buttons input {
       opacity: 0;
+      margin: 0 0.15rem;
+      transform: scale(1.5);
       cursor: pointer;
       z-index: 10;
     }
@@ -171,11 +173,22 @@
       border-radius: 0.5rem;
       color: var(--text-main);
       background-color: var(--key3-bg);
-      transition: background-color 0.3s ease, color 0.3s ease;
-      box-shadow: 0px 4px 0px var(--key3-shadow);
+      box-shadow: 0px 6px 0px var(--key3-shadow);
+      transition: background-color 0.3s ease, color 0.3s ease,
+        transform 0.1s ease, box-shadow 0.15s ease, opacity 0.1s ease;
+
+      &:hover {
+        opacity: 0.75;
+      }
+
+      &:hover.number,
+      &:hover.operation {
+        color: var(--text-second);
+        background-color: var(--key2-toggle-bg);
+      }
 
       &:active {
-        transform: scale(0.97);
+        transform: scale(0.95);
         box-shadow: 0px 2px 0px var(--key3-shadow);
       }
     }
@@ -185,7 +198,6 @@
       font-size: calc(0.5rem + 1vw);
       color: var(--text-second);
       background-color: var(--key1-bg);
-      transition: background-color 0.3s ease, color 0.3s ease;
       box-shadow: 0px 4px 0px var(--key1-shadow);
 
       &:active {
@@ -196,7 +208,6 @@
     .result {
       color: var(--text-second);
       background-color: var(--key2-bg);
-      transition: background-color 0.3s ease, color 0.3s ease;
       box-shadow: 0px 4px 0px var(--key2-shadow);
       &:active {
         box-shadow: 0px 2px 0px var(--key2-shadow);

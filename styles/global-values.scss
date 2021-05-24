@@ -17,90 +17,90 @@
   --text-third: hsl(0, 0%, 100%);
 }
 
-.theme1 {
-  animation: changeColorsTheme1 1s ease-out forwards;
-
-  @keyframes changeColorsTheme1 {
-    0% {
-    }
-
-    100% {
-      --main-bg: hsl(222, 26%, 31%);
-      --toggle-bg: hsl(223, 31%, 20%);
-      --keypad-bg: hsl(223, 31%, 20%);
-      --screen-bg: hsl(224, 36%, 15%);
-      --key1-bg: hsl(225, 21%, 49%);
-      --key1-shadow: hsl(224, 28%, 35%);
-      --key2-bg: hsl(6, 63%, 50%);
-      --key2-toggle-bg: hsl(6, 63%, 50%);
-      --key2-shadow: hsl(6, 70%, 34%);
-      --key3-bg: hsl(30, 25%, 89%);
-      --key3-shadow: hsl(28, 16%, 65%);
-      --text-main: hsl(221, 14%, 31%);
-      --text-second: hsl(0, 0%, 100%);
-      --text-third: hsl(0, 0%, 100%);
-    }
-  }
-}
-
-.theme2 {
-  animation: changeColorsTheme2 1s ease-out forwards;
-
-  @keyframes changeColorsTheme2 {
-    0% {
-    }
-
-    100% {
-      --main-bg: hsl(0, 0%, 90%);
-      --toggle-bg: hsl(0, 5%, 81%);
-      --keypad-bg: hsl(0, 5%, 81%);
-      --screen-bg: hsl(0, 0%, 93%);
-      --key1-bg: hsl(185, 42%, 37%);
-      --key1-shadow: hsl(185, 58%, 25%);
-      --key2-bg: hsl(25, 98%, 40%);
-      --key2-toggle-bg: hsl(25, 98%, 40%);
-      --key2-shadow: hsl(25, 99%, 27%);
-      --key3-bg: hsl(45, 7%, 89%);
-      --key3-shadow: hsl(35, 11%, 61%);
-      --text-main: hsl(60, 10%, 19%);
-      --text-second: hsl(0, 0%, 100%);
-      --text-third: hsl(0, 0%, 100%);
-    }
-  }
-}
-
-.theme3 {
-  animation: changeColorsTheme3 1s ease-out forwards;
-
-  @keyframes changeColorsTheme3 {
-    0% {
-    }
-
-    100% {
-      --main-bg: hsl(268, 75%, 9%);
-      --toggle-bg: hsl(268, 71%, 12%);
-      --keypad-bg: hsl(268, 71%, 12%);
-      --screen-bg: hsl(268, 71%, 12%);
-      --key1-bg: hsl(281, 89%, 26%);
-      --key1-shadow: hsl(285, 91%, 52%);
-      --key2-bg: hsl(176, 91%, 52%);
-      --key2-toggle-bg: hsl(176, 100%, 44%);
-      --key2-shadow: hsl(177, 92%, 70%);
-      --key3-bg: hsl(268, 47%, 21%);
-      --key3-shadow: hsl(290, 70%, 36%);
-      --text-main: hsl(52, 100%, 62%);
-      --text-second: hsl(198, 20%, 13%);
-      --text-third: hsl(0, 0%, 100%);
-    }
-  }
-}
-
 $bodyBG: var(--main-bg);
 
 html {
   position: relative;
   font-family: "Spartan", sans-serif;
   font-size: 16px;
+
+  &.theme1 {
+    animation: changeColorsTheme1 1s ease-out forwards;
+
+    @keyframes changeColorsTheme1 {
+      0% {
+      }
+
+      100% {
+        --main-bg: hsl(222, 26%, 31%);
+        --toggle-bg: hsl(223, 31%, 20%);
+        --keypad-bg: hsl(223, 31%, 20%);
+        --screen-bg: hsl(224, 36%, 15%);
+        --key1-bg: hsl(225, 21%, 49%);
+        --key1-shadow: hsl(224, 28%, 35%);
+        --key2-bg: hsl(6, 63%, 50%);
+        --key2-toggle-bg: hsl(6, 63%, 50%);
+        --key2-shadow: hsl(6, 70%, 34%);
+        --key3-bg: hsl(30, 25%, 89%);
+        --key3-shadow: hsl(28, 16%, 65%);
+        --text-main: hsl(221, 14%, 31%);
+        --text-second: hsl(0, 0%, 100%);
+        --text-third: hsl(0, 0%, 100%);
+      }
+    }
+  }
+
+  &.theme2 {
+    animation: changeColorsTheme2 1s ease-out forwards;
+
+    @keyframes changeColorsTheme2 {
+      0% {
+      }
+
+      100% {
+        --main-bg: hsl(0, 0%, 90%);
+        --toggle-bg: hsl(0, 5%, 81%);
+        --keypad-bg: hsl(0, 5%, 81%);
+        --screen-bg: hsl(0, 0%, 93%);
+        --key1-bg: hsl(185, 42%, 37%);
+        --key1-shadow: hsl(185, 58%, 25%);
+        --key2-bg: hsl(25, 98%, 40%);
+        --key2-toggle-bg: hsl(25, 98%, 40%);
+        --key2-shadow: hsl(25, 99%, 27%);
+        --key3-bg: hsl(45, 7%, 89%);
+        --key3-shadow: hsl(35, 11%, 61%);
+        --text-main: hsl(60, 10%, 19%);
+        --text-second: hsl(0, 0%, 100%);
+        --text-third: hsl(0, 0%, 100%);
+      }
+    }
+  }
+
+  &.theme3 {
+    animation: changeColorsTheme3 1s ease-out forwards;
+
+    @keyframes changeColorsTheme3 {
+      0% {
+      }
+
+      100% {
+        --main-bg: hsl(268, 75%, 9%);
+        --toggle-bg: hsl(268, 71%, 12%);
+        --keypad-bg: hsl(268, 71%, 12%);
+        --screen-bg: hsl(268, 71%, 12%);
+        --key1-bg: hsl(281, 89%, 26%);
+        --key1-shadow: hsl(285, 91%, 52%);
+        --key2-bg: hsl(176, 91%, 52%);
+        --key2-toggle-bg: hsl(176, 100%, 44%);
+        --key2-shadow: hsl(177, 92%, 70%);
+        --key3-bg: hsl(268, 47%, 21%);
+        --key3-shadow: hsl(290, 70%, 36%);
+        --text-main: hsl(52, 100%, 62%);
+        --text-second: hsl(198, 20%, 13%);
+        --text-third: hsl(0, 0%, 100%);
+      }
+    }
+  }
 }
 
 body {

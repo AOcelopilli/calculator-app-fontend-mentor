@@ -1,4 +1,5 @@
 const d = document,
+  w = window,
   $root = d.querySelector("html"),
   $btns = d.querySelectorAll(".number"),
   $display = d.querySelector(".display"),
@@ -75,33 +76,59 @@ d.addEventListener("click", (e) => {
         break;
     }
   }
-
-  /* console.log("Letra A: ", A);
-  console.log("Letra B: ", B);
-  console.log("Cambio: ", changed); */
 });
 
 d.addEventListener("change", (e) => {
-  console.log(e.target.id);
-
   if (e.target.id == "theme2") {
-    $root.classList.remove("theme1");
-    $root.classList.remove("theme3");
-    $root.classList.add("theme2");
+    w.localStorage.setItem("theme", "2");
   } else if (e.target.id == "theme3") {
-    $root.classList.remove("theme1");
-    $root.classList.remove("theme2");
-    $root.classList.add("theme3");
+    w.localStorage.setItem("theme", "3");
   } else if (e.target.id == "theme1") {
+    w.localStorage.setItem("theme", "1");
+  }
+
+  if (w.localStorage.getItem("theme") === "1") {
     $root.classList.remove("theme2");
     $root.classList.remove("theme3");
     $root.classList.add("theme1");
+  } else if (w.localStorage.getItem("theme") === "2") {
+    $root.classList.remove("theme1");
+    $root.classList.remove("theme3");
+    $root.classList.add("theme2");
+  } else if (w.localStorage.getItem("theme") === "3") {
+    $root.classList.remove("theme1");
+    $root.classList.remove("theme2");
+    $root.classList.add("theme3");
   }
 });
 
+d.addEventListener("DOMContentLoaded", (e) => {
+  /* themes */
+  if (w.localStorage.getItem("theme") === "1") {
+    $root.classList.remove("theme2");
+    $root.classList.remove("theme3");
+    $root.classList.add("theme1");
+  } else if (w.localStorage.getItem("theme") === "2") {
+    $root.classList.remove("theme1");
+    $root.classList.remove("theme3");
+    $root.classList.add("theme2");
+  } else if (w.localStorage.getItem("theme") === "3") {
+    $root.classList.remove("theme1");
+    $root.classList.remove("theme2");
+    $root.classList.add("theme3");
+  }
+
+  /* operations */
+});
+
 const addDot = (number) => {
+  if (number.includes(".")) {
+    return number;
+  }
+
   number += ".";
   $display.innerText = number;
+
   return number;
 };
 
