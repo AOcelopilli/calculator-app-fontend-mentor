@@ -18,8 +18,8 @@ Future caracteristics.
 
 ### Links
 
-Solution URL: url
-Live Site URL: url
+Solution URL: [Frontend mentor solution](https://www.frontendmentor.io/solutions/html-sass-vanilla-javascript-desktop-to-mobile-X94EzDC4-)
+Live Site URL: [Calc app](https://aocelopilli.github.io/calculator-app-fontend-mentor/)
 
 ## My process
 
@@ -33,7 +33,7 @@ Built with
 
 ## What I learned
 
-I improved my skills using colors, transitions and animations, those were the principal issues to solve this challenge.
+I improved my skills using colors, transitions and animations, those were the principal issues to solve in this challenge.
 
 ## Continued development
 
