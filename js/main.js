@@ -1,80 +1,30 @@
 const d = document,
-  w = window,
+  LS = window.localStorage,
   $root = d.querySelector("html"),
   $btns = d.querySelectorAll(".number"),
   $display = d.querySelector(".display"),
   $memory = d.querySelector(".memory"),
   $record = d.querySelector(".record");
 
-let operation,
-  changed = 0,
-  A = "",
-  B = "",
-  result = 0;
+let numberA = "",
+  numberB = "",
+  operation = "",
+  result = null;
 
-d.addEventListener("click", (e) => {
-  if (e.target.classList.contains("number") && changed == 0) {
-    A = getValue(e, A);
-  } else if (e.target.classList.contains("number") && changed == 1) {
-    B = getValue(e, B);
-  }
-
-  if (e.target.classList.contains("dot") && changed == 0) {
-    A = addDot(A);
-  } else if (e.target.classList.contains("dot") && changed == 1) {
-    B = addDot(B);
-  }
-
-  if (e.target.classList.contains("operation") && A != 0) {
-    changed = 1;
-    operation = e.target.innerText;
-
-    $display.innerText = 0;
-    $memory.innerText = A;
-    $record.innerText = `${A} ${operation}`;
-  }
-
-  if (e.target.classList.contains("delete") && changed == 0) {
-    A = deleteBtn();
-  } else if (e.target.classList.contains("delete") && changed == 1) {
-    B = deleteBtn();
-  }
-
-  if (e.target.classList.contains("reset")) {
-    reset();
-  }
-
-  if (e.target.classList.contains("result") && A != 0 && B != 0) {
-    switch (operation) {
-      case "+":
-        result = parseFloat(A) + parseFloat(B);
-        reset();
-        $display.innerText = valueFormated = new Intl.NumberFormat().format(
-          result
-        );
-        break;
-      case "-":
-        result = parseFloat(A) - parseFloat(B);
-        reset();
-        $display.innerText = valueFormated = new Intl.NumberFormat().format(
-          result
-        );
-        break;
-      case "X":
-        result = parseFloat(A) * parseFloat(B);
-        reset();
-        $display.innerText = valueFormated = new Intl.NumberFormat().format(
-          result
-        );
-        break;
-      case "/":
-        result = parseFloat(A) / parseFloat(B);
-        reset();
-        $display.innerText = valueFormated = new Intl.NumberFormat().format(
-          result
-        );
-        break;
-    }
+d.addEventListener("DOMContentLoaded", (e) => {
+  /* themes */
+  if (LS.getItem("theme") === "1") {
+    $root.classList.remove("theme2");
+    $root.classList.remove("theme3");
+    $root.classList.add("theme1");
+  } else if (LS.getItem("theme") === "2") {
+    $root.classList.remove("theme1");
+    $root.classList.remove("theme3");
+    $root.classList.add("theme2");
+  } else if (LS.getItem("theme") === "3") {
+    $root.classList.remove("theme1");
+    $root.classList.remove("theme2");
+    $root.classList.add("theme3");
   }
 });
 
@@ -102,24 +52,54 @@ d.addEventListener("change", (e) => {
   }
 });
 
-d.addEventListener("DOMContentLoaded", (e) => {
-  /* themes */
-  if (w.localStorage.getItem("theme") === "1") {
-    $root.classList.remove("theme2");
-    $root.classList.remove("theme3");
-    $root.classList.add("theme1");
-  } else if (w.localStorage.getItem("theme") === "2") {
-    $root.classList.remove("theme1");
-    $root.classList.remove("theme3");
-    $root.classList.add("theme2");
-  } else if (w.localStorage.getItem("theme") === "3") {
-    $root.classList.remove("theme1");
-    $root.classList.remove("theme2");
-    $root.classList.add("theme3");
+d.addEventListener("click", (e) => {
+  if (e.target.classList.contains("number") && !operation) {
+    numberA = formatNumber(e, numberA);
+    LS.setItem("numberA", numberA);
+    $display.innerText = numberA;
+  } else if (e.target.classList.contains("number") && operation) {
+    numberB = formatNumber(e, numberB);
+    LS.setItem("numberB", numberB);
+    $display.innerText = numberB;
   }
 
-  /* operations */
+  if (e.target.classList.contains("dot") && !operation) {
+    numberA = addDot(numberA);
+  } else if (e.target.classList.contains("dot") && operation) {
+    numberB = addDot(numberB);
+  }
+
+  if (e.target.classList.contains("operation") && !operation) {
+    operation = e.target.innerText;
+
+    $display.innerText = "0";
+    $memory.innerText = numberA;
+    $record.innerText = `${numberA} ${operation}`;
+
+    LS.setItem("operation", operation);
+  }
+
+  if (e.target.classList.contains("reset")) {
+    reset();
+  }
+
+  if (
+    e.target.classList.contains("result") &&
+    numberA !== "" &&
+    numberB !== ""
+  ) {
+    getResult(numberA, operation, numberB);
+  }
 });
+
+const formatNumber = (key, number) => {
+  let valueFormated;
+
+  number += key.target.innerText;
+  valueFormated = new Intl.NumberFormat().format(parseFloat(number));
+
+  return valueFormated;
+};
 
 const addDot = (number) => {
   if (number.includes(".")) {
@@ -128,29 +108,39 @@ const addDot = (number) => {
 
   number += ".";
   $display.innerText = number;
-
+  /* valueFormated = new Intl.NumberFormat().format(parseFloat(number)); */
   return number;
 };
 
-const getValue = (number, value) => {
-  value += number.target.innerText;
-
-  $display.innerText = new Intl.NumberFormat().format(value);
-  return value;
-};
-
 const reset = () => {
-  A = "";
-  B = "";
-  changed = 0;
+  (numberA = ""), (numberB = ""), (operation = ""), (result = null);
+  LS.setItem("valueA", ""),
+    LS.setItem("valueB", ""),
+    LS.setItem("operation", ""),
+    LS.setItem("result", "");
 
   $display.innerText = "0";
   $memory.innerText = "";
   $record.innerText = "";
 };
 
-const deleteBtn = (number) => {
-  number = "";
-  $display.innerText = 0;
-  return number;
+const getResult = (A, operation, B) => {
+  switch (operation) {
+    case "+":
+      total = parseFloat(A) + parseFloat(B);
+      break;
+    case "-":
+      total = parseFloat(A) - parseFloat(B);
+      break;
+    case "*":
+      total = parseFloat(A) * parseFloat(B);
+      break;
+    case "/":
+      total = parseFloat(A) / parseFloat(B);
+      break;
+  }
+
+  $display.innerText = total;
+  $memory.innerText = "";
+  $record.innerText = "";
 };

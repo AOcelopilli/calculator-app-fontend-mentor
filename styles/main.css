@@ -274,13 +274,15 @@ body {
 #main #keyboard .key:hover {
   opacity: 0.75;
 }
-#main #keyboard .key:hover.number, #main #keyboard .key:hover.operation {
-  color: var(--text-second);
-  background-color: var(--key2-toggle-bg);
-}
 #main #keyboard .key:active {
   transform: scale(0.95);
+  opacity: 0.75;
   box-shadow: 0px 2px 0px var(--key3-shadow);
+}
+#main #keyboard .key:hover.number, #main #keyboard .key:hover.operation, #main #keyboard .key:hover.dot {
+  opacity: 1;
+  color: var(--text-second);
+  background-color: var(--key2-toggle-bg);
 }
 #main #keyboard .delete,
 #main #keyboard .reset {
