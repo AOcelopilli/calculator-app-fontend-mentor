@@ -26,26 +26,48 @@ d.addEventListener("DOMContentLoaded", (e) => {
     $root.classList.remove("theme2");
     $root.classList.add("theme3");
   }
+
+  /* records */
+  numberA = LS.getItem("numberA");
+  numberB = LS.getItem("numberB");
+  operation = LS.getItem("operation");
+  result = LS.getItem("result");
+
+  if (numberA && !operation && !numberB && !result) {
+    numberA = LS.getItem("numberA");
+    $display.innerText = numberA;
+  } else if (numberA && operation && !numberB && !result) {
+    $display.innerText = 0;
+    $memory.innerText = numberA;
+    $record.innerText = `${numberA} ${operation}`;
+  } else if (numberA && operation && numberB && !result) {
+    $display.innerText = numberB;
+    $memory.innerText = numberA;
+    $record.innerText = `${numberA} ${operation}`;
+  } else if (!numberA && !operation && !numberB && result) {
+    result = LS.getItem("result");
+    $display.innerText = result;
+  }
 });
 
 d.addEventListener("change", (e) => {
   if (e.target.id == "theme2") {
-    w.localStorage.setItem("theme", "2");
+    LS.setItem("theme", "2");
   } else if (e.target.id == "theme3") {
-    w.localStorage.setItem("theme", "3");
+    LS.setItem("theme", "3");
   } else if (e.target.id == "theme1") {
-    w.localStorage.setItem("theme", "1");
+    LS.setItem("theme", "1");
   }
 
-  if (w.localStorage.getItem("theme") === "1") {
+  if (LS.getItem("theme") === "1") {
     $root.classList.remove("theme2");
     $root.classList.remove("theme3");
     $root.classList.add("theme1");
-  } else if (w.localStorage.getItem("theme") === "2") {
+  } else if (LS.getItem("theme") === "2") {
     $root.classList.remove("theme1");
     $root.classList.remove("theme3");
     $root.classList.add("theme2");
-  } else if (w.localStorage.getItem("theme") === "3") {
+  } else if (LS.getItem("theme") === "3") {
     $root.classList.remove("theme1");
     $root.classList.remove("theme2");
     $root.classList.add("theme3");
@@ -114,8 +136,8 @@ const addDot = (number) => {
 
 const reset = () => {
   (numberA = ""), (numberB = ""), (operation = ""), (result = null);
-  LS.setItem("valueA", ""),
-    LS.setItem("valueB", ""),
+  LS.setItem("numberA", ""),
+    LS.setItem("numberB", ""),
     LS.setItem("operation", ""),
     LS.setItem("result", "");
 
@@ -140,7 +162,8 @@ const getResult = (A, operation, B) => {
       break;
   }
 
+  reset();
+
   $display.innerText = total;
-  $memory.innerText = "";
-  $record.innerText = "";
+  LS.setItem("result", total);
 };
