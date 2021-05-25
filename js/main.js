@@ -28,10 +28,10 @@ d.addEventListener("DOMContentLoaded", (e) => {
   }
 
   /* records */
-  numberA = LS.getItem("numberA");
-  numberB = LS.getItem("numberB");
-  operation = LS.getItem("operation");
-  result = LS.getItem("result");
+  numberA = LS.getItem("numberA") || "";
+  numberB = LS.getItem("numberB") || "";
+  operation = LS.getItem("operation") || "";
+  result = LS.getItem("result") || null;
 
   if (numberA && !operation && !numberB && !result) {
     numberA = LS.getItem("numberA");
