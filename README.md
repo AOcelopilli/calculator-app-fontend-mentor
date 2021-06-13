@@ -41,6 +41,6 @@ Now I would like to recreate this app with tools like React js to practice and f
 
 ## Author
 
-+ Website - [angelpineda.com](https://www.angelpineda.com)
++ Website - [angelpineda](https://www.angelpineda.com.mx)
 + Frontend Mentor - [@angelp495](https://www.frontendmentor.io/profile/angelp495)
 + Twitter - [@AOcelopilli](https://twitter.com/AOcelopilli)
