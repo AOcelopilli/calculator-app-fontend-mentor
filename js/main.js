@@ -105,6 +105,18 @@ d.addEventListener("click", (e) => {
     reset();
   }
 
+  if (e.target.classList.contains("delete")) {
+    if (!operation) {
+      numberA = "";
+      LS.setItem("numberA", "");
+      $display.innerText = "0";
+    } else {
+      numberB = "";
+      LS.setItem("numberB", "");
+      $display.innerText = "0";
+    }
+  }
+
   if (
     e.target.classList.contains("result") &&
     numberA !== "" &&

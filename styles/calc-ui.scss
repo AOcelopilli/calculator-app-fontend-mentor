@@ -1,11 +1,16 @@
 #calc {
   width: 40vw;
+  max-width: 400px;
   height: 80vh;
   transition: background-color 0.3s ease;
 
-  @media (max-width: 690px) {
+  @media (max-width: 400px) {
     width: 90vw;
-    height: 95vh;
+  }
+
+  @media (max-width: 800px) {
+    width: 85vw;
+    max-width: 400px;
   }
 }
 
